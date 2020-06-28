@@ -1,0 +1,4 @@
+---
+deployment:
+  tasks:
+    - /bin/cp -R dist/restful-builder/* /home/pratiqpd/restful.pratikwadekar.me

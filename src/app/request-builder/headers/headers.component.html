@@ -1,0 +1,27 @@
+<div class="container mt-3">
+  <h5>Add Headers to your request</h5>
+  <form [formGroup]="rbs.rbform">
+    <div [formArrayName]="'headers'">
+      <div *ngFor="let param of rbs.headers; let i = index" class="row mt-2" [formGroupName]="i">
+        <div class="col-4">
+          <input [formControlName]="'key'" type="text" class="form-control-sm form-control" placeholder="Key" />
+        </div>
+        <div class="col-4">
+          <input [formControlName]="'value'" type="text" class="form-control-sm form-control" placeholder="Value" />
+        </div>
+        <div class="col-1 m-0 p-0">
+          <button class="btn btn-sm btn-success" (click)="rbs.addHeaders()">
+            +
+          </button>
+
+        </div>
+        <div class="col-1 m-0 p-0">
+          <button *ngIf="rbs.headersSize !== 1" class="btn btn-sm btn-danger ml-2 ml-md-0 ml-lg-0 ml-xl-0"
+            (click)="rbs.removeHeaders(i)">
+            -
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

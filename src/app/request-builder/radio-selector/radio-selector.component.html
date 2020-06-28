@@ -1,0 +1,8 @@
+<div *ngFor="let option of radioSelectorOptions" class="form-check form-check-inline">
+  <input [checked]="option.checked" (change)="onRadioSelect($event)" class="form-check-input" type="radio" [name]="name"
+    [id]="option.value" [value]="option.value" />
+  <!-- label's for attr should be same as id attr of radio -->
+  <label class="form-check-label" [for]="option.value">{{
+    option.label
+  }}</label>
+</div>

@@ -1,0 +1,21 @@
+<div id="response" class="container mb-5">
+    <!-- <hr class="bg-light"> -->
+
+
+    <div class="mt-3 d-flex justify-content-between">
+        <h5>Response</h5>
+
+
+        <div *ngIf="fireRequestService.response.status || fireRequestService.response.statusText">
+            <p
+                [ngClass]="fireRequestService.response.status.toString().startsWith('2') ? 'text-success' : 'text-danger'">
+                {{ fireRequestService.response.status.toString()  }} | {{ fireRequestService.response.statusText }}
+            </p>
+
+        </div>
+    </div>
+    <div class="container mb-3">
+        <ace-editor [text]="fireRequestService.response.body" #editor style="height:200px;"></ace-editor>
+    </div>
+
+</div>

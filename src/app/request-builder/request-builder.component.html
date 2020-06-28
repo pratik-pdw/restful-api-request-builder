@@ -1,0 +1,74 @@
+<div class="container mt-3">
+  <form>
+    <div [formGroup]="rbs.rbform" class="form-row">
+      <div class="col-md-2">
+        <label for="requestMethod">Method</label>
+        <select [formControlName]="'method'" class="form-control mb-2 mb-md-0 mb-lg-0" name="requestMethod"
+          id="requestMethod">
+          <option *ngFor="let method of methods">{{ method }}</option>
+        </select>
+      </div>
+      <div class="col-md-8">
+        <label for="requestUrl">URL Endpoint</label>
+        <input (keyup.enter)="onSubmitClick()" [formControlName]="'url'" id="requestUrl" name="requestUrl" type="text"
+          class="form-control" />
+      </div>
+      <div class="col-md-2">
+        <br />
+        <button [disabled]="!rbs.rbform.valid"
+          (click)="rbs.rbform.valid && !fireRequestService.reqInProg ? onSubmitClick() : onAbortBtnClick()"
+          type="button" class="mt-0 mt-md-2 mt-lg-2 btn btn-block"
+          [ngClass]="fireRequestService.reqInProg ? 'btn-danger' : 'btn-success'">
+          <span *ngIf="fireRequestService.reqInProg">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          </span>
+          <span *ngIf="!fireRequestService.reqInProg">Send</span>
+          <span *ngIf="fireRequestService.reqInProg"> Abort</span>
+        </button>
+      </div>
+      <!-- <div class="col-md-2">
+        <br>
+        <button *ngIf="fireRequestService.reqInProg" (click)="onAbortBtnClick()"
+          [disabled]="!fireRequestService.reqInProg" class="mt-2 btn btn-danger btn-block">Abort</button>
+      </div> -->
+    </div>
+
+    <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+          aria-selected="false">Authentication <light-dot *ngIf="rbs.authScheme.dirty">
+          </light-dot> </a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+          aria-selected="false">Params <light-dot *ngIf="rbs.queryParamControls.dirty">
+          </light-dot> </a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="header-tab" data-toggle="tab" href="#header" role="tab" aria-controls="profile"
+          aria-selected="false">Headers <light-dot *ngIf="rbs.headerControls.dirty">
+          </light-dot>
+        </a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="body-tab" data-toggle="tab" href="#body" role="tab" aria-controls="contact"
+          aria-selected="true">Body <light-dot *ngIf="rbs.reqBody">
+          </light-dot> </a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <app-auth-methods></app-auth-methods>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <app-query-params></app-query-params>
+      </div>
+      <div class="tab-pane fade" id="header" role="tabpanel" aria-labelledby="header-tab">
+        <app-headers></app-headers>
+      </div>
+      <div class="tab-pane fade show active" id="body" role="tabpanel" aria-labelledby="contact-tab">
+        <app-req-body></app-req-body>
+      </div>
+    </div>
+  </form>
+</div>

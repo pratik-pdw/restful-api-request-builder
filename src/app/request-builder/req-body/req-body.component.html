@@ -1,0 +1,21 @@
+<div class="form-group mt-3">
+    <app-radio-selector (selectedRadio)="onRadioSelect($event)" [radioName]="name" [optionsObject]="options">
+    </app-radio-selector>
+
+    <div *ngIf="radioValue === 'raw'" class="container mt-2">
+        <div class="dropdown mb-2">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{selectedDropdownOption | uppercase}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a (click)="setLanguage(dropdownOption)" *ngFor="let dropdownOption of dropdownOptions"
+                    class="dropdown-item" href="#">{{ dropdownOption | uppercase }}</a>
+            </div>
+        </div>
+        <!-- 
+        <ngx-monaco-editor style="border-radius: 5px;" [options]="editorOptions" [(ngModel)]="rbs.reqBody">
+        </ngx-monaco-editor> -->
+        <app-editor [editorMode]="selectedDropdownOption" [readOnly]="false"></app-editor>
+    </div>
+</div>

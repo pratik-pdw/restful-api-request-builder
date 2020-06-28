@@ -1,0 +1,10 @@
+<div class="container">
+  <ace-editor [(text)]="text" #editor style="height:150px;"></ace-editor>
+  <select (change)="onDropdownSelect($event)">
+    <option value="css">css</option>
+    <option value="json">json</option>
+    <option value="html">html</option>
+    <option value="xml">xml</option>
+    <option value="text">text</option>
+  </select>
+</div>

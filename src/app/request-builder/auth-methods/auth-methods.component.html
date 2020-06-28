@@ -1,0 +1,40 @@
+<div class="container mt-2">
+
+  <app-radio-selector (selectedRadio)="onRadioSelect($event)" [radioName]="name" [optionsObject]="options">
+  </app-radio-selector>
+
+
+  <div class="mt-3" *ngIf="radioValue !== 'none'" id="showMethods">
+    <div *ngIf="radioValue === 'basic'" id="basic">
+      <form [formGroup]="rbs.authScheme">
+        <div [formGroupName]="'basic'">
+          <div class="form-group row">
+            <label for="username" class="col-sm-2 col-form-label">Username</label>
+            <div class="col-sm-10">
+              <input [formControlName]="'username'" type="text" class="form-control form-control-sm" id="username" />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-10">
+              <input [formControlName]="'password'" type="password" class="form-control form-control-sm"
+                id="password" />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="radioValue === 'bearer'" id="bearerToken">
+      <form [formGroup]="rbs.authScheme">
+        <div [formGroupName]="'bearer'">
+          <div class="form-group row">
+            <label for="token" class="col-sm-2 col-form-label">Bearer Token</label>
+            <div class="col-sm-10">
+              <input [formControlName]="'token'" type="text" class="form-control-sm form-control" id="token" />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
