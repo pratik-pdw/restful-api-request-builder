@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - /bin/cd ../home/pratiqpd/restful.pratikwadekar.me && rm *.js && rm *.html && cd .. && cd .. && cd .. && cd bin
+    - cd ../../restful.pratikwadekar.me/ && rm *.js && rm *.html && cd ../../repositories/restful-api-request-builder
