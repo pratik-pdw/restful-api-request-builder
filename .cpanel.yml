@@ -1,4 +1,4 @@
 ---
 deployment:
   tasks:
-    - /bin/cp -R dist/restful-builder/* /home/pratiqpd/restful.pratikwadekar.me
+    - /bin/cd /home/pratiqpd/restful.pratikwadekar.me && rm *.js && rm *.html && cd .. && cd .. && cd ..
