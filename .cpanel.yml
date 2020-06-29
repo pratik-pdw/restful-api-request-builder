@@ -2,4 +2,7 @@
 deployment:
   tasks:
     - cd ../../restful.pratikwadekar.me/ && rm *.js && rm *.html && rm *.css && rm *.txt && rm *.ico && rm -r assets && cd ../repositories/restful-api-request-builder
+---
+deployment:
+  tasks:
     - /bin/cp -R dist/restful-builder/* /home/pratiqpd/restful.pratikwadekar.me
